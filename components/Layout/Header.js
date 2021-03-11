@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import CompareContext from 'hooks/compare'
 import { useRouter } from 'next/router'
 import styles from './Layout.module.css'
 
 export default function Header() {
+  const { compareDataCount } = CompareContext.useContainer()
   const router = useRouter()
   const { asPath } = router
   const isActive = path => {
@@ -25,7 +27,10 @@ export default function Header() {
               <a className={isActive('/') ? styles.activeMenu : ''}>Browse</a>
             </Link>
             <Link href='/compare'>
-              <a className={isActive('/compare') ? styles.activeMenu : ''}>Compare</a>
+              <a className={isActive('/compare') ? styles.activeMenu : ''}>
+                Compare
+                {compareDataCount > 0 && ` (${compareDataCount})`}
+              </a>
             </Link>
           </div>
         </div>

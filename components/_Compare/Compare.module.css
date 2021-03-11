@@ -1,0 +1,31 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: solid 1px #e8e8e8;
+  margin-bottom: 50px;
+}
+
+.table th {
+  padding: 10px;
+  border: solid 1px #e8e8e8;
+}
+
+.table td {
+  padding: 10px;
+  border: solid 1px #e8e8e8;
+  font-size: 14px;
+}
+
+.table td:first-child {
+  font-weight: 600;
+}
+
+.artwork {
+  max-width: 100px;
+  background-color: #efefef;
+  border-radius: 16px;
+}
+
+.name {
+  margin: 10px 0
+}

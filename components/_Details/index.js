@@ -1,42 +1,34 @@
 import { ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons'
-import { Pokemon__Get } from 'contracts/pokemon/get-pokemon'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import getDescription from 'modules/details/getDescription'
-import getEvolution from 'modules/details/getEvolution'
-import getWeakness from 'modules/details/getWeakness'
 import Link from 'next/link'
 import Status from './Status'
 import EvolutionChain from './EvolutionChain'
 import Description from './Description'
+import CompareContext from 'hooks/compare'
 import styles from './Details.module.css'
 
-export default function Details() {
-  const [data, setData] = useState({})
-  const router = useRouter()
-  const { query } = router;
-  const PokemonSWR = Pokemon__Get.swr(`${query.name}`, {
-    onSuccess: async res => {
-      // GET DESCRIPTION
-      const description = await getDescription(res.species?.url)
-
-      // GET WEAKNESS
-      const weakness = await getWeakness(res.types)
-
-      // GET EVOLUTION
-      const evolution_data = await getEvolution(res.species?.url)
-
-      // GENERATE FINAL DATA
-      const finalData = {
-        basic: res,
-        description,
-        weakness,
-        evolution_data
-      }
-      setData(finalData)
-    }
-  })
+export default function Details({ data }) {
+  const { setCompareDataCount } = CompareContext.useContainer()
   const abilityText = data?.basic?.abilities.map(i => i.ability.name).join(', ')
+
+  const handleAddToCompare = () => {
+    let current = localStorage.getItem('compareData')
+    current = JSON.parse(current) || []
+    try {
+      if(current.length === 0){
+        localStorage.setItem('compareData', JSON.stringify([data]))
+        setCompareDataCount(1)
+      } else {
+        const uniq = current.filter(i => i.basic.id !== data.basic.id);
+        const output = [...uniq, data]
+        setCompareDataCount(output.length)
+        localStorage.setItem('compareData', JSON.stringify(output))
+      }
+      window.alert(`${data.basic.name} added to compare list`)
+    } catch {
+      console.log('Failed add to compare')
+    }
+  }
+
   return (
     <div className='container'>
       <Link href='/'>
@@ -52,7 +44,7 @@ export default function Details() {
             {data?.basic?.name}
           </span>
         </h2>
-        <button className='btn'>
+        <button className='btn' onClick={() => handleAddToCompare()}>
           <PlusOutlined />
           Add to compare
         </button>
@@ -89,11 +81,11 @@ export default function Details() {
 
           <div className={styles.item}>
             <h5 className={styles.labell}>Height</h5>
-            <p>{data?.basic?.height}</p>
+            <p>{data?.basic?.height * 10} cm</p>
           </div>
           <div className={styles.item}>
             <h5 className={styles.labell}>Weight</h5>
-            <p>{data?.basic?.weight}</p>
+            <p>{data?.basic?.weight / 10} kg</p>
           </div>
           <div className={styles.item}>
             <h5 className={styles.labell}>Abilities</h5>
