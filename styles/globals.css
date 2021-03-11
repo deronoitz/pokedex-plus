@@ -14,3 +14,142 @@ a {
 * {
   box-sizing: border-box;
 }
+
+div {
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 14px;
+  color: var(--content-color);
+  margin: 0;
+  line-height: 1.5em;
+}
+
+p.info {
+  font-size: 12px;
+}
+
+.container {
+  max-width: 992px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.f {
+  display: flex;
+}
+.f-ctr {
+  justify-content: center;
+}
+.mdl {
+  align-items: center;
+}
+.f-c {
+  flex-direction: column;
+}
+.f-btw {
+  justify-content: space-between;
+}
+.f-rht {
+  justify-content: flex-end;
+}
+.f-end {
+  align-items: flex-end;
+}
+.f-start {
+  align-items: flex-start;
+}
+.f-w {
+  flex-wrap: wrap;
+}
+.select {
+  position: relative;
+}
+.select .arrow {
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  font-size: 14px;
+  color: var(--content-color);
+}
+select {
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: solid 1px #e8e8e8;
+  height: 36px;
+  min-width: 100px;
+  outline: none;
+  appearance: none;
+}
+
+.tag {
+  font-size: 11px;
+  border-radius: 4px;
+  background-color: #e8e8e8;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  text-transform: capitalize;
+}
+
+.grass {
+  background-color: #7bd082;
+}
+.poison {
+  background-color: #a374b7;
+  color: #fff;
+}
+.fire {
+  background-color: #ff8c56;
+}
+.water {
+  background-color: #9aecff;
+}
+.flying {
+  background-color: #78a8ff;
+}
+.bug {
+  background-color: #bff281;
+}
+.ground {
+  background-color: #7b5b43;
+  color: #fff;
+}
+
+.stat-bar {
+  height: 5px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #eaeaea;
+  position: relative;
+  overflow: hidden;
+}
+.stat-bar span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #78a8ff;
+}
+
+.stat-wrapper {
+  margin: 5px 0;
+}
+
+.stat-wrapper p {
+  color: var(--title-color);
+  text-transform: capitalize;
+}
+
+.btn {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 8px;
+  height: 36px;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+  font-weight: 600;
+}

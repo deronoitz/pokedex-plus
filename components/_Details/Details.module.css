@@ -1,0 +1,45 @@
+
+.name {
+  text-transform: capitalize;
+}
+.name span {
+  text-transform: capitalize;
+}
+.id{
+  font-weight: 400;
+  color: var(--content-color);
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.artwork {
+  max-width: 40%;
+  min-width: 40%;
+  object-fit: cover;
+  background: #efefef;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.label {
+  margin: 0;
+}
+.labell {
+  margin: 0 0 10px;
+}
+
+.content {
+  margin-left: 50px;
+  /* max-width: 40%; */
+}
+
+.item {
+  margin: 10px 0;
+}
+
+.back {
+  font-size: 14px;
+  color: var(--content-color);
+  margin-top: 20px;
+  display: inline-block;
+}

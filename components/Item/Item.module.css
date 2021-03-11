@@ -1,0 +1,35 @@
+.artwork {
+  width: 100%;
+  object-fit: cover;
+  background: #efefef;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: .2s
+}
+
+.item {
+  max-width: calc(100% / 4 - 30px);
+  margin: 15px;
+  cursor: pointer;
+}
+.item:hover .artwork {
+  box-shadow: 0 0 8px rgba(0,0,0,.1);
+  transform: scale(1.05);
+  background: #fff;
+}
+
+.title {
+  font-size: 16px;
+  color: var(--title-color);
+  font-weight: 600;
+  margin: 5px 0;
+  text-transform: capitalize;
+}
+
+.content {
+  padding: 5px 0;
+}
+
+.tagWrapper {
+  margin-top: 10px;
+}
