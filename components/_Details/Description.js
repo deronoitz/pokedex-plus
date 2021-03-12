@@ -1,13 +1,17 @@
 import { DownOutlined } from '@ant-design/icons'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Details.module.css'
 export default function Description({ data }) {
-  const [selected, setSelected] = useState('red')
+  const [selected, setSelected] = useState('')
   const shaped = data?.map(i => ({
     version: i.version.name,
     description: i.flavor_text
   }))
   const selectedText = shaped?.filter(i => i.version === selected) || []
+  useEffect(() => {
+    setSelected(shaped[0].version)
+  }, [data])
+
   return (
     <>
       <div className='f f-btw mdl'>

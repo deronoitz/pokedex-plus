@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Status from './Status'
 import EvolutionChain from './EvolutionChain'
 import Description from './Description'
@@ -9,12 +9,12 @@ import styles from './Details.module.css'
 export default function Details({ data }) {
   const { setCompareDataCount } = CompareContext.useContainer()
   const abilityText = data?.basic?.abilities.map(i => i.ability.name).join(', ')
-
+  const router = useRouter()
   const handleAddToCompare = () => {
     let current = localStorage.getItem('compareData')
     current = JSON.parse(current) || []
     try {
-      if(current.length === 0){
+      if (current.length === 0) {
         localStorage.setItem('compareData', JSON.stringify([data]))
         setCompareDataCount(1)
       } else {
@@ -29,14 +29,16 @@ export default function Details({ data }) {
     }
   }
 
+  const handleBack = () => {
+    router.back()
+  }
+
   return (
     <div className='container'>
-      <Link href='/'>
-        <a className={styles.back}>
-          <ArrowLeftOutlined style={{ marginRight: 12 }} />
-          Back to browse
-        </a>
-      </Link>
+      <a className={styles.back} onClick={() => handleBack()}>
+        <ArrowLeftOutlined style={{ marginRight: 12 }} />
+        Back to browse
+      </a>
       <div className='f f-btw mdl'>
         <h2 className={styles.name}>
           <span className={styles.id}>#{('00' + data?.basic?.id).slice(-3)}</span>

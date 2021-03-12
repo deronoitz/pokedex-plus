@@ -81,6 +81,14 @@ select {
   min-width: 100px;
   outline: none;
   appearance: none;
+  padding-right: 30px;
+}
+
+.input {
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: solid 1px #e8e8e8;
+  height: 36px;
 }
 
 .tag {
@@ -152,6 +160,17 @@ select {
   color: var(--secondary-color);
   cursor: pointer;
   font-weight: 600;
+}
+
+.btn.gray {
+  background-color: #e8e8e8;
+  color: var(--secondary-color);
+}
+
+.btn.disabled {
+  background: #e8e8e8;
+  pointer-events: none;
+  color: #ccc;
 }
 
 .tag button {

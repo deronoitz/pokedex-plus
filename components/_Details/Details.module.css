@@ -42,4 +42,5 @@
   color: var(--content-color);
   margin-top: 20px;
   display: inline-block;
+  cursor: pointer;
 }

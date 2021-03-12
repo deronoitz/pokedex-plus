@@ -36,7 +36,7 @@ export default function PokemonDetails() {
   return (
     <Layout>
       <div className='container f f-ctr mdl' style={{height: isEmpty ? '70vh' : ''}}>
-        {isEmpty && error && 'Data not found'}
+        {isEmpty && error && `Pokemon "${query.name}" is not found`}
         {isEmpty && !error && 'Getting pokemon data...'}
       </div>
       {!isEmpty && <Details data={data} />}

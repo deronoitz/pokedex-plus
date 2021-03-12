@@ -1,6 +1,7 @@
 import CompareContext from 'hooks/compare'
 import Table from './Table'
 import Empty from './Empty'
+import WinRate from './WinRate'
 import { useEffect, useState } from 'react'
 export default function Compare() {
   const { compareDataCount } = CompareContext.useContainer()
@@ -23,6 +24,7 @@ export default function Compare() {
   return (
     <>
       {currentCompare.length > 0 && <Table data={currentCompare} />}
+      {currentCompare.length > 0 && <WinRate data={currentCompare}/>}
       {currentCompare.length === 0 && <Empty />}
     </>
   )
