@@ -11,7 +11,6 @@ export default function Compare() {
     if (!ISSERVER) {
       let compareData = localStorage.getItem('compareData')
       compareData = JSON.parse(compareData) || []
-      console.log(compareData)
       setCurrentCompare(compareData)
     }
   }

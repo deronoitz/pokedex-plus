@@ -58,7 +58,7 @@ export default function Filter() {
     })
   }
   return (
-    <div className={styles.filter}>
+    <div className={`container ${styles.filter}`}>
       <div className='f mdl f-btw' style={{ marginBottom: 20 }}>
         <h3>Browse Filter</h3>
       </div>

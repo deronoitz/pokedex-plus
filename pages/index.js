@@ -3,6 +3,7 @@ import { Pokemon__Get } from 'contracts/pokemon/get-pokemon'
 import { useRouter } from 'next/router'
 import getFiltered from 'modules/filter/getFiltered'
 import Layout from 'components/Layout'
+import Filter from 'components/_Browse/Filter'
 import Browse from 'components/_Browse'
 import qs from 'query-string'
 
@@ -61,10 +62,17 @@ export default function Home() {
   }, [page, query])
   return (
     <Layout>
+      <Filter />
       {
         !PokemonListSWR.data &&
         <div className='container f f-ctr mdl' style={{ height: '70vh' }}>
           Getting pokemon data...
+        </div>
+      }
+      {
+        PokemonListSWR.data && data.length === 0 &&
+        <div className='container f f-ctr mdl' style={{ height: '70vh' }}>
+          Pokemon with current filter is not found
         </div>
       }
       {

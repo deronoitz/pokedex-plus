@@ -1,4 +1,6 @@
 import Status from 'components/_Details/Status'
+import Rates from './Rates'
+import Effects from './Effects'
 import styles from './Compare.module.css'
 
 export default function WinRate({ data: currentCompare }) {
@@ -21,13 +23,8 @@ export default function WinRate({ data: currentCompare }) {
         </thead>
         <tbody>
           <tr>
-            <td>Name</td>
-            {currentCompare.map(i => <td key={i.basic.id}>{i.basic.name}</td>)}
-          </tr>
-
-          <tr>
-            <td>Code</td>
-            {currentCompare.map(i => <td key={i.basic.id}>#{('00' + i.basic.id).slice(-3)}</td>)}
+            <td>Win rates</td>
+            <Rates data={currentCompare} />
           </tr>
           <tr>
             <td>Types</td>
@@ -74,27 +71,13 @@ export default function WinRate({ data: currentCompare }) {
           </tr>
           <tr>
             <td>Total status (before)</td>
-            <td>525</td>
-            <td>290</td>
+            {currentCompare.map(i => <td key={i.basic.id}>{i.basic.stats.map(i => i.base_stat).reduce((a, b) => a + b)}</td>)}
           </tr>
           <tr>
             <td>Effects</td>
-            <td>
-              <h5 className={styles.name}>Meowth :</h5>
-              <p>- venusaur attack become double</p>
-              <p>- meowth attack become half</p>
-            </td>
-            <td>
-              <h5 className={styles.name}>Venusaur :</h5>
-              <p>- venusaur attack become double</p>
-              <p>- meowth attack become half</p>
-            </td>
+            <Effects data={currentCompare} />
           </tr>
-          <tr>
-            <td>Total status (before)</td>
-            <td>525</td>
-            <td>290</td>
-          </tr>
+
         </tbody>
       </table>
     </div>
