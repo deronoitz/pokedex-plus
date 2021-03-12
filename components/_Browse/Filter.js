@@ -22,6 +22,8 @@ export default function Filter() {
   const abilities = AbilitySWR.data?.results || []
   const pokemonCount = PokemonSWR.data?.count || 1
 
+  const isChecked = (value, data) => data.filter(i => i === value).length > 0
+
   const handleSelectType = e => {
     const { value, checked } = e.target
     if (checked) {
@@ -68,7 +70,7 @@ export default function Filter() {
           {
             types.map(i =>
               <div key={i.name} className='f mdl'>
-                <input type='checkbox' onChange={e => handleSelectType(e)} name='types' value={i.name} />
+                <input type='checkbox' onChange={e => handleSelectType(e)} name='types' value={i.name} checked={isChecked(i.name, typeData)}/>
                 <p>{i.name}</p>
               </div>
             )
@@ -78,38 +80,38 @@ export default function Filter() {
           <div>
             <h5>Height</h5>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='all' />
+              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='all' checked={'all' === height}/>
               <p>{`All`}</p>
             </div>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='short' />
+              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='short' checked={'short' === height}/>
               <p>{`Short (< 1 meter)`}</p>
             </div>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='medium' />
+              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='medium' checked={'medium' === height}/>
               <p>{`Medium (< 1.5 meter)`}</p>
             </div>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='tall' />
+              <input type='radio' onChange={e => setHeight(e.target.value)} name='height' value='tall' checked={'tall' === height}/>
               <p>{`Tall (> 1.5 meter)`}</p>
             </div>
           </div>
           <div style={{ marginTop: 20 }}>
             <h5>Weight</h5>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='all' />
+              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='all' checked={'all' === weight}/>
               <p>{`All`}</p>
             </div>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='light' />
+              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='light' checked={'light' === weight}/>
               <p>{`Light (< 10 kg)`}</p>
             </div>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='medium' />
+              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='medium' checked={'medium' === weight}/>
               <p>{`Medium (< 50 kg)`}</p>
             </div>
             <div className='f mdl'>
-              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='heavy' />
+              <input type='radio' onChange={e => setWeight(e.target.value)} name='weight' value='heavy' checked={'heavy' === weight} />
               <p>{`Heavy (> 50 kg)`}</p>
             </div>
           </div>

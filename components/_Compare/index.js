@@ -19,7 +19,6 @@ export default function Compare() {
     getCompareData()
   }, [compareDataCount])
 
-
   return (
     <>
       {currentCompare.length > 0 && <Table data={currentCompare} />}
