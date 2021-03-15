@@ -31,13 +31,14 @@ export default function Home() {
       let pokemons = await Promise.all(
         res.results.map(async data => {
           const response = await fetch(data.url)
-          const pokemon = await response.json()
-          return pokemon
+          return await response.ok && await response.json()
         })
       )
+      pokemons = pokemons.filter(i => i !== false)
       if(query.filter){
         pokemons = await getFiltered(pokemons, query)
       }
+      
       setData(pokemons)
     }
   })
